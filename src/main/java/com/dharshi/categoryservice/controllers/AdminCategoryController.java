@@ -17,17 +17,21 @@ public class AdminCategoryController {
     private CategoryService categoryService;
 
     @PostMapping("/create")
-    public ResponseEntity<ApiResponseDto<?>> createCategory(@RequestBody CategoryRequestDto categoryRequestDto) throws ServiceLogicException, CategoryAlreadyExistsException {
+    public ResponseEntity<ApiResponseDto<?>> createCategory(@RequestBody CategoryRequestDto categoryRequestDto)
+            throws ServiceLogicException, CategoryAlreadyExistsException {
         return categoryService.createCategory(categoryRequestDto);
     }
 
     @PutMapping("/edit")
-    public ResponseEntity<ApiResponseDto<?>> editCategory(@RequestParam String categoryId, @RequestBody CategoryRequestDto categoryRequestDto) throws ServiceLogicException, CategoryAlreadyExistsException {
+    public ResponseEntity<ApiResponseDto<?>> editCategory(@RequestParam String categoryId,
+            @RequestBody CategoryRequestDto categoryRequestDto)
+            throws ServiceLogicException, CategoryAlreadyExistsException {
         return categoryService.editCategory(categoryId, categoryRequestDto);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ApiResponseDto<?>> deleteCategory(@RequestParam String categoryId) throws ServiceLogicException, CategoryAlreadyExistsException {
+    public ResponseEntity<ApiResponseDto<?>> deleteCategory(@RequestParam String categoryId)
+            throws ServiceLogicException, CategoryAlreadyExistsException {
         return categoryService.deleteCategory(categoryId);
     }
 

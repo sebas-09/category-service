@@ -27,11 +27,9 @@ public class WebSecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/category/**").permitAll()
-                                .requestMatchers("/admin/category/**").hasAuthority("ROLE_ADMIN")
-                                .anyRequest().authenticated()
-                );
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/category/**").permitAll()
+                        .requestMatchers("/admin/category/**").hasAuthority("ROLE_ADMIN")
+                        .anyRequest().authenticated());
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
